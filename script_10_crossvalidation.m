@@ -1,7 +1,7 @@
 clc;
 clear all;
 
-load('DatafMRI15T_DU.mat');
+load('DatafMRI15T_DU.mat');  % dataset load
 Labels=lab;
 % X( :, ~any(X,1) ) = [];
 
