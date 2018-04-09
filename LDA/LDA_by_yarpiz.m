@@ -11,7 +11,7 @@
 % Contact Info: sm.kalami@gmail.com, info@yarpiz.com
 %
 
-function [Y, W, lambda] = LDA_1(X, L)
+function [Y, W, lambda] = LDA_by_yarpiz(X, L)
 
     Classes=unique(L)';
     k=numel(Classes);
