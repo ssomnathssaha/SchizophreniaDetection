@@ -1,4 +1,4 @@
-function [TrainingTime, TestingTime, TrainingAccuracy, TestingAccuracy] = OSELM(train_data, test_data, Elm_Type, nHiddenNeurons, ActivationFunction, N0, Block)
+function [TrainingTime, TestingTime, TrainingAccuracy, TestingAccuracy, label_index_actual] = OSELM(train_data, test_data, Elm_Type, nHiddenNeurons, ActivationFunction, N0, Block)
 
 % Usage: OSELM(TrainingData_File, TestingData_File, Elm_Type, NumberofHiddenNeurons, ActivationFunction, N0, Block)
 % OR:    [TrainingTime, TestingTime, TrainingAccuracy, TestingAccuracy] = OSELM(TrainingData_File, TestingData_File, Elm_Type, NumberofHiddenNeurons, ActivationFunction, N0, Block)
@@ -13,7 +13,7 @@ function [TrainingTime, TestingTime, TrainingAccuracy, TestingAccuracy] = OSELM(
 %                           'sig' for sigmoidal function, G(a,b,x) = 1/(1+exp(-(ax+b)))
 %                           'sin' for sine function, G(a,b,x) = sin(ax+b)
 %                           'hardlim' for hardlim function, G(a,b,x) = hardlim(ax+b)
-% N0                    - Number of initial training data used in the initial phase of OSLEM, which is not less than the number of hidden neurons
+% N0                    - Number of initial training data used in the initial phase of OSLEM
 % Block                 - Size of block of data learned by OSELM in each step
 %
 % Output: 
@@ -145,7 +145,7 @@ for n = N0 : Block : nTrainingData
     beta = beta + M * H' * (Tn - H * beta);
 end
 end_time_train=cputime;
-TrainingTime=end_time_train-start_time_train        
+TrainingTime=end_time_train-start_time_train;        
 clear Pn Tn H M;
 
 switch lower(ActivationFunction)
